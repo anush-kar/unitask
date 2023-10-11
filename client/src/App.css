@@ -1,0 +1,174 @@
+body, ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family:'Roboto';
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #282a36;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
+}
+
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #bd93f9; /* Change the color on hover */
+}
+
+.Page{
+  display: flex;
+  flex-direction: row;
+}
+
+/* .Sidebar {
+  width: 250px;
+  background-color: #282a36;
+  color: #fff;
+  height: 100vh;
+  position: fixed;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+} */
+
+.Sidebar{
+  color: #fff;
+  height:100vh;
+  width:250px;
+  background-color: #21232d;
+  padding:0;
+}
+
+.SidebarList{
+  height: auto;
+  padding: 0;
+  width: 100%;
+}
+
+.SidebarList .Row {
+  height: 50px;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.SidebarList .Row:hover{
+  cursor: pointer;
+  background-color: #44475a;
+}
+
+.Sidebar #active {
+  background-color: #44475a;
+}
+
+.Row #icon {
+  flex-basis: 30%;
+  display: grid;
+  place-items: center;
+}
+
+.Row #title {
+  flex-basis: 70%
+}
+
+.Content{
+  width: 100vw;
+  height: 100vh;
+  background-color: #282a36;
+  display: flex; 
+  flex-direction: row;   
+  justify-content: center;
+}
+
+.TaskContainer{
+  /* background-color: #bd93f9; */
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;    
+  overflow-y: scroll;
+}
+
+.card{
+  border: 2px solid #8be9fd;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 10px;
+  color: #fff;
+  background-color: #21232d;
+}
+
+.card .title{
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.card .specific--container{
+  display: flex;
+  justify-content: left;
+}
+
+.card .specific--container .specifics{
+  margin-right: 20px;
+}
+
+.card .subhead{
+  font-weight: 600;
+}
+
+.card Button{
+  background-color: #50fa7b;
+}
+
+.card button:hover{
+  background-color: #50fa7a8c;
+}
+
+.HomeContent{
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.Title{
+  text-align: center;
+  font-size: 7.5rem;
+  font-weight: 900;
+  padding: 50px;
+}
+
+.slogan{
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
