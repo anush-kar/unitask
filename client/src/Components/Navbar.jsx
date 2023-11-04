@@ -9,6 +9,7 @@ export default function Navbar() {
               <li><a href="/About">About</a></li>
               <li><a href="#">Profile</a></li>
               <li><a href="#">Logout</a></li>
+              <li><a href="/Signup">Signup</a></li>
           </ul>
       </nav>
     );

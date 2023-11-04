@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* install postcss language support extension */
 body, ul {
   margin: 0;
   padding: 0;
@@ -171,4 +175,8 @@ body, ul {
   text-align: center;
   font-weight: 900;
   font-size: 1.5rem;
+}
+
+.h-screen{
+  background-color: #282a36;
 }

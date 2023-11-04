@@ -9,12 +9,14 @@ import Tasks from "./Pages/Tasks";
 import PostTask from "./Pages/PostTask";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
+import Signup from "./Pages/Signup";
 import "./App.css"
 
 function App() {
   
   const router = createBrowserRouter([
     { path: "/", element: <Home />, },
+    { path: "/Signup", element: <Signup />, },
     { path: "/About", element: <About />, },
     { path: "/Tasks", element: <Tasks />, },
     { path: "/PostTask", element: <PostTask />, },
