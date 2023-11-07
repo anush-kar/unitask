@@ -20,23 +20,17 @@ const newUser = async (req, res) => {
         if (password != cpassword){
             return res.status(422).json({error: "passwords do not match"})
         }
+        else{
+            const user = new User({name, email, username, password, cpassword})
+            // encrypt here
+            await user.save()
 
-        const user = new User({name, email, username, password, cpassword})
-
-        const userRegister = await user.save()
-
-        console.log('${user} user registered successfully')
-        console.log(userRegister)
-
-        if (userRegister){
             res.status(200).json({message: "user registered successfully"})
-        } else {
-            res.status(500).json({error: "failed to register"})
         }
+
     } catch (error) {
         res.status(400).json({error: error.message})
     }
-    // res.json({mssg: 'POST a new user'})
 }
 
 const getUser = async (req, res) => {
