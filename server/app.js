@@ -3,12 +3,13 @@ require('dotenv').config()
 const express = require('express')
 const mongoose =  require('mongoose')
 const taskRoutes = require('./routes/tasks')
-
-//express app
+const userRoutes = require('./routes/users')
 const app = express()
 
-//middleware
 app.use(express.json())
+
+// app.use(require('./routes/users'))
+//middleware
 
 app.use((req, res, next) => {
     console.log(req.path, req.method);
@@ -16,7 +17,8 @@ app.use((req, res, next) => {
 })
 
 //routes
-app.use('/api/tasks', taskRoutes);
+app.use('/api/tasks', taskRoutes)
+app.use('/api/users', userRoutes)
 
 // app.get('/', (req, res) => {
 //     res.json({mssg: 'Welcome to Unitask'});
@@ -31,6 +33,6 @@ mongoose.connect(process.env.MONGO_URI)
         })
     })
     .catch((error) => {
-        console.log(error)        
+        console.log(error)
     })
 
