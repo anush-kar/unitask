@@ -33,6 +33,7 @@ function Signup() {
             {/* <!-- Right column container with form --> */}
             <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
               <form>
+              <h1 className="text-2xl font-bold text-white mb-4 text-center">Sign up</h1>
                 {/* Name input */}
                 <div className="relative mb-6" data-te-input-wrapper-init>
                   <label
@@ -113,7 +114,7 @@ function Signup() {
                     htmlFor="cpassword"
                     className="block mb-2 text-sm font-medium text-white"
                   >
-                    Password
+                    Confirm Password
                   </label>
                   <input
                     type="password"
@@ -126,14 +127,14 @@ function Signup() {
                   />
                 </div>
 
-                {/* <!-- Submit button --> */}
+                {/* <!-- Submit button -->className="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"*/}
                 <button
                   type="submit"
-                  className="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                  className="inline-block w-full rounded px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out custom-button"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
-                  Sign in
+                  Sign up
                 </button>
               </form>
             </div>

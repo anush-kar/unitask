@@ -10,6 +10,7 @@ import PostTask from "./Pages/PostTask";
 import Navbar from "./Components/Navbar";
 import Sidebar from "./Components/Sidebar";
 import Signup from "./Pages/Signup";
+import Login from "./Pages/Login";
 import "./App.css"
 
 function App() {
@@ -20,13 +21,15 @@ function App() {
     { path: "/About", element: <About />, },
     { path: "/Tasks", element: <Tasks />, },
     { path: "/PostTask", element: <PostTask />, },
+    { path: "/Login", element: <Login />, },
   ]);
 
   return(
     <div className="App">
       <Navbar />
-      <div className="Page">
-        <Sidebar />
+      <Sidebar />
+      <div className="Content">
+
         <RouterProvider router={router} />
       </div>
     </div>
