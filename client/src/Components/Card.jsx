@@ -10,7 +10,7 @@ export default function Card(props) {
             <p className="author"><span className="subhead">Requested by: </span>{props.author}</p>
             <div className="specific--container">
                 <div className="specifics"><span className="subhead">Fee: </span>{props.price}</div>
-                <div className="specifics"><span className="subhead">Time: </span>{props.time}</div>
+                {/*<div className="specifics"><span className="subhead">Time: </span>{props.time}</div>*/}
             </div>
             <Button variant="contained">Accept</Button>
         </div>
