@@ -1,5 +1,7 @@
 const User = require("../models/userModel")
 const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const newUser = async (req, res) => {
     const {name, email, username, password, cpassword} = req.body
@@ -57,9 +59,8 @@ const getUsers = async (req, res) => {
 
 //login route
 const loginUser = async (req,res) => {
-    // console.log(req.body)
-    // res.status(200).json({message: "noice"})
     try{
+        let token
         const {username, password} = req.body
 
         if (!username || !password) {
@@ -68,12 +69,30 @@ const loginUser = async (req,res) => {
         
         const userLogin = await User.findOne({username: username})
 
-        console.log(userLogin)
+        // console.log(userLogin)
+        if (userLogin) {
+            const isMatch = await bcrypt.compare(password, userLogin.password)
 
-        if(!userLogin){
-            res.status(400).json({error: "user error"})
+            token = await userLogin.generateAuthToken()
+            console.log(token)
+
+            res.cookie("jwtoken", token, {
+                expires: new Date(Date.now() + 2592000000),
+                httpOnly: true
+            })
+    
+            if(!isMatch){
+                res.status(400).json({error: "invalid credentials"})
+                console.log("invalid credentials")
+            } 
+            else{
+                res.json({message: "user logged in successfully"})
+                console.log('user logged in successfully')
+            } 
+        } else {
+            res.status(400).json({error: "invalid credentials"})
+            console.log("invalid credentials")
         }
-        res.json({message: "user logged in successfully"})
     }
     catch(error){
         console.log(error)

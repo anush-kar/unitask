@@ -14,7 +14,7 @@ router.get('/', getUsers)
 
 router.get('/:id', getUser)
 
-router.post('/', newUser)
+router.post('/register', newUser)
 
 router.post('/login', loginUser)
 

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import signupPic from "../Assets/signupPic.svg";
+import {useNavigate} from 'react-router-dom';
+import axios from 'axios'
 
 function Signup() {
+  const navigateTo = useNavigate()
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -20,6 +23,39 @@ function Signup() {
     setUser({...user, [name]:value});
   } 
 
+  const PostData = async (e) => {
+    e.preventDefault()
+    
+    const {name, email, username, password, cpassword} = user
+    axios.post('http://localhost:3000/api/users/register', user)
+    .then(result => {
+      console.log(result)
+      navigateTo('/login')
+    })
+
+    // const res = await fetch("/register", {
+    //   method: "POST",
+    //   mode: 'cors',
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     name, email, username, password, cpassword
+    //   })
+    // })
+
+    // const data = await res.json()
+    // if(data.status === '422' || !data){
+    //   window.alert("invalid registration")
+    //   console.log("invalid registration")
+    // } else {
+    //   window.alert("registration successful")
+    //   console.log("registration successful")
+
+    //   navigateTo('/login')
+    // }
+  }
+
   return (
     <>
       <section className="container h-screen overflow-auto">
@@ -32,7 +68,7 @@ function Signup() {
 
             {/* <!-- Right column container with form --> */}
             <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
-              <form>
+              <form method="POST">
               <h1 className="text-2xl font-bold text-white mb-4 text-center">Sign up</h1>
                 {/* Name input */}
                 <div className="relative mb-6" data-te-input-wrapper-init>
@@ -127,12 +163,14 @@ function Signup() {
                   />
                 </div>
 
-                {/* <!-- Submit button -->className="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"*/}
+
                 <button
                   type="submit"
                   className="inline-block w-full rounded px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out custom-button"
                   data-te-ripple-init
                   data-te-ripple-color="light"
+                  value="register"
+                  onClick={PostData}
                 >
                   Sign up
                 </button>

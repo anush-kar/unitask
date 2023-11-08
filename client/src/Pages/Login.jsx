@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import signupPic from "../Assets/signupPic.svg";
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom';
 
 function Signin() {
+  const navigateTo = useNavigate()
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -16,33 +19,46 @@ function Signin() {
 
     setUser({...user, [name]:value});
   };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+
+  const loginUser = async (e) => {
+    e.preventDefault()
+
+    const {username, password} = user
+    axios.post('http://localhost:3000/api/users/login', user)
+    .then(result => {
+      console.log(result)
+      window.alert("user logged in successfully")
+      navigateTo('/')
+    })
+  }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
     
-    try {
-      // You can make an API request to authenticate the user here
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+  //   try {
+  //     // You can make an API request to authenticate the user here
+  //     const response = await fetch("/api/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(user),
+  //     });
   
-      if (response.ok) {
-        // Authentication was successful
-        const data = await response.json();
-        console.log("Login successful. User data:", data);
+  //     if (response.ok) {
+  //       // Authentication was successful
+  //       const data = await response.json();
+  //       console.log("Login successful. User data:", data);
   
-        // You can also navigate to another page or set user authentication state here
-      } else {
-        // Authentication failed
-        console.log("Login failed. Please check your credentials.");
-      }
-    } catch (error) {
-      console.error("Error occurred during login:", error);
-    }
-  };
+  //       // You can also navigate to another page or set user authentication state here
+  //     } else {
+  //       // Authentication failed
+  //       console.log("Login failed. Please check your credentials.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error occurred during login:", error);
+  //   }
+  // };
   
   //const handleSubmit=(e)=>{
   //  e.preventDefault();
@@ -62,7 +78,7 @@ function Signin() {
 
             {/* <!-- Right column container with form --> */}
             <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
-              <form>
+              <form method="POST">
               <h1 className="text-2xl font-bold text-white mb-4 text-center">Sign in</h1>
                 {/*Username input*/}
                 <div className="relative mb-6" data-te-input-wrapper-init>
@@ -108,6 +124,8 @@ function Signin() {
                   className="inline-block w-full rounded px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out custom-button"
                   data-te-ripple-init
                   data-te-ripple-color="light"
+                  value="login"
+                  onClick={loginUser}
                 >
                   Sign in
                 </button>
